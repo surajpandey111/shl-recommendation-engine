@@ -1,6 +1,53 @@
+# SHL Assessment Recommendation Engine (Advanced RAG Approach)
+
+This repository contains an advanced implementation of the SHL Assessment Recommendation Engine, developed for the SHL Research Intern application. The project leverages Retrieval-Augmented Generation (RAG) with LangChain, FAISS, and HuggingFace embeddings to recommend SHL assessments using semantic search. You can explore the live demo of the web app at [https://shl-recommendation-engine-suraj.streamlit.app/](https://shl-recommendation-engine-suraj.streamlit.app/).
+
+## Project Overview
+
+The SHL Assessment Recommendation Engine assists users in finding suitable SHL assessments by processing queries like “Which assessment is suitable for an entry-level customer service role?”. It employs an advanced RAG approach with semantic search to retrieve relevant assessments from a product catalog and generate concise recommendations.
+
+- **GitHub Repository**: [https://github.com/surajpandey111/shl-recommendation-engine](https://github.com/surajpandey111/shl-recommendation-engine)
+
+### Features
+- **Semantic Retrieval**: Utilizes LangChain, FAISS, and HuggingFace embeddings (`all-MiniLM-L6-v2`) for vector-based semantic search, enabling accurate retrieval for complex queries.
+- **Recommendation Generation**: Produces concise, relevant recommendations based on retrieved assessments.
+- **User Interface**: A Streamlit web app (`shl_engine.py`) with:
+  - Filters for Job Level and Test Duration.
+  - Sample questions and custom query input.
+  - Clean display of recommendations.
+- **Error Handling**: Robust handling for CSV loading, encoding issues, and API failures with user-friendly messages.
+
+## Setup Instructions
+
+### Prerequisites
+- Python 3.8 or higher
+- Gemini API key (for recommendation generation)
+- `shl_product_catalog.csv` file in the project directory
+
+### Installation
+1. **Clone the Repository**:
+git clone https://github.com/surajpandey111/shl-recommendation-engine.git
+cd shl-recommendation-engine
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+Required packages: `streamlit`, `pandas`, `langchain-core`, `langchain-community`, `langchain-huggingface`, `faiss-cpu`, `google-generativeai`.
+
+3. **Set Up the Gemini API Key**:
+- Set the environment variable:
+export GEMINI_API_KEY='your-gemini-api-key'  # On Windows: set GEMINI_API_KEY=your-gemini-api-key
+- Or replace `'your-actual-api-key'` in `shl_engine.py` with your key.
+
+4. **Prepare the Product Catalog**:
+- Place `shl_product_catalog.csv` in the project directory.
+- Required columns: `Product Name`, `Description`, `Job Level`, `Languages`, `Test Duration`, `Test Type`, `Remote Testing`.
+
+### Running the App
+1. **Start the Streamlit App**:
+streamlit run shl_engine.py
 2. **Access the App**:
 - Visit `http://localhost:8501` in your browser.
-- Use filters, sample questions, or enter a custom query.
+- Use filters, sample questions, or enter a custom query to get recommendations.
 
 ## Development Process
 
